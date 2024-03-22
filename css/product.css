@@ -786,7 +786,7 @@ h3 {
 .light-holder .light {
     position: absolute;
     top: 0px;
-    left: 5px;
+    left: -5px;
     width: 500px;
     height: 0px;
     /* clip-path: polygon(50% 0%, 25% 100%, 75% 100%); */

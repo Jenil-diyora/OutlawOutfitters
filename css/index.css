@@ -2279,6 +2279,12 @@ p {
 }
 
 
+@media(max-width: 1300px) {
+    .sale {
+        font-size: 130px;
+    }
+}
+
 
 
 @media(max-width: 1200px) {
