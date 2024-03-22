@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Method</title>
+    <link rel="stylesheet" href="css/payment.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <ul>
+                <li>Confirm</li>
+                <li class="active">Payment Method</li>
+                <li>Finish</li>
+            </ul>
+        </div>
+        <form id="paymentForm">
+            <div id="paymentMethod" class="form-section">
+                <h2>Choose Payment Method</h2>
+                <div class="radio-input-wrapper">
+                    <label class="label">
+                        <input value="cash-on-delivery" name="value-radio" id="value-2" class="radio-input" type="radio"
+                            >
+                        <div class="radio-design"></div>
+                        <div class="label-text">Cash On Delivery</div>
+                    </label>
+                    <label class="label">
+                        <input value="credit-card" name="value-radio" id="value-3" class="radio-input" type="radio">
+                        <div class="radio-design"></div>
+                        <div class="label-text">Credit Card</div>
+                    </label>
+                    <label class="label">
+                        <input value="debit-card" name="value-radio" id="value-4" class="radio-input" type="radio">
+                        <div class="radio-design"></div>
+                        <div class="label-text">Debit Card</div>
+                    </label>
+                    <label class="label">
+                        <input value="upi" name="value-radio" id="value-5" class="radio-input" type="radio">
+                        <div class="radio-design"></div>
+                        <div class="label-text">UPI</div>
+                    </label>
+                </div>
+            </div>
+        </form>
+        <div class="button-container">
+            <a href="detail.html"><button type="button" class="back-btn">Back</button></a>
+            <button type="button" onclick="Redirect()">Next</button>
+        </div>
+    </div>
+    <script src="js/payment.js"></script>
+</body>
+
+</html>

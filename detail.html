@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Details</title>
+    <link rel="stylesheet" href="css/detail.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <ul>
+                <li class="active">Confirm</li>
+                <li>Payment Method</li>
+                <li>Finish</li>
+            </ul>
+        </div>
+        <form id="paymentForm">
+            <div id="confirm" class="form-section active">
+                <h2>Confirm Your Details</h2>
+                <input type="text" id="name" placeholder="Name" required><br>
+                <input type="email" id="email" placeholder="Email" required><br>
+                <input type="text" id="address" placeholder="Address" required><br>
+                <input type="text" id="city" placeholder="City" required><br>
+                <input type="text" id="state" placeholder="State" required><br>
+                <input type="text" id="zip" placeholder="ZIP Code" required><br>
+                <input type="tel" id="contact" placeholder="Contact Number" required><br>
+            </div>
+        </form>
+        <div class="button-container">
+            <a href="cart.html"><button type="button" class="back-btn">Back</button></a>
+            <button type="button" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("nextBtn").addEventListener("click", function() {
+            if (validateForm()) {
+                window.location.href = "paymentoption.html";
+            } else {
+                alert("Please fill in all the required fields.");
+            }
+        });
+
+        function validateForm() {
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var address = document.getElementById("address").value.trim();
+            var city = document.getElementById("city").value.trim();
+            var state = document.getElementById("state").value.trim();
+            var zip = document.getElementById("zip").value.trim();
+            var contact = document.getElementById("contact").value.trim();
+
+            if (name === "" || email === "" || address === "" || city === "" || state === "" || zip === "" || contact === "") {
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            /* Light gray background */
+        }
+
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            margin-bottom: 30px;
+        }
+
+        .progress-bar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .progress-bar li {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            color: #999;
+            font-weight: bold;
+        }
+
+        .progress-bar li:before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #ddd;
+            z-index: -1;
+        }
+
+        .progress-bar li.active {
+            color: #007bff;
+        }
+
+        .progress-bar li.active:before {
+            background-color: #007bff;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .form-section h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .form-section input[type="text"],
+        .form-section input[type="tel"],
+        .form-section input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .button-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .button-container button {
+            padding: 10px 30px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button-container button.back-btn {
+            background-color: #ccc;
+            color: #000;
+        }
+
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .methods {
+            display: flex;
+            align-items: center;
+            /* Align items vertically in center */
+            margin-bottom: 10px;
+            /* Add some bottom margin for spacing */
+        }
+
+        .methods label {
+            width: 40%;
+            margin-left: 10px;
+            /* Add left margin for spacing between radio button and label */
+        }
+
+        /* MAIN */
+        /* =============================================== */
+        .label {
+            display: flex;
+            align-items: center;
+            border-radius: 100px;
+            padding: 14px 16px;
+            margin: 5px 0;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .label:hover,
+        .label:focus-within,
+        .label:active {
+            background: hsla(0, 0%, 80%, .14);
+        }
+
+        .radio-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .radio-design {
+            width: 22px;
+            height: 22px;
+            border-radius: 100px;
+            background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(225, 97%, 62%));
+            position: relative;
+        }
+
+        .radio-design::before {
+            content: '';
+            display: inline-block;
+            width: inherit;
+            height: inherit;
+            border-radius: inherit;
+            background: hsl(0, 0%, 90%);
+            transform: scale(1.1);
+            transition: .3s;
+        }
+
+        .radio-input:checked+.radio-design::before {
+            transform: scale(0);
+        }
+
+        .label-text {
+            color: hsl(0, 0%, 60%);
+            margin-left: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 18px;
+            font-weight: 900;
+            transition: .3s;
+        }
+
+        .radio-input:checked~.label-text {
+            color: hsl(0, 0%, 40%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <ul>
+                <li class="active">Confirm</li>
+                <li>Payment Method</li>
+                <li>Finish</li>
+            </ul>
+        </div>
+
+        <form id="paymentForm">
+            <div id="confirm" class="form-section active">
+                <h2>Confirm Your Details</h2>
+                <input type="text" placeholder="Name" required><br>
+                <input type="email" placeholder="Email" required><br>
+                <input type="text" placeholder="Address" required><br>
+                <input type="text" placeholder="City" required><br>
+                <input type="text" placeholder="State" required><br>
+                <input type="text" placeholder="ZIP Code" required><br>
+                <input type="tel" placeholder="Contact Number" required><br>
+            </div>
+
+            <div id="paymentMethod" class="form-section">
+                <h2>Choose Payment Method</h2>
+                <div class="radio-input-wrapper">
+                    <label class="label">
+                        <input value="cash-on-delivery" name="value-radio" id="value-2" class="radio-input" type="radio"
+                            checked>
+                        <div class="radio-design"></div>
+                        <div class="label-text">Cash On Delivery</div>
+                    </label>
+                    <label class="label">
+                        <input value="credit-card" name="value-radio" id="value-3" class="radio-input" type="radio">
+                        <div class="radio-design"></div>
+                        <div class="label-text">Credit Card</div>
+                    </label>
+                    <label class="label">
+                        <input value="debit-card" name="value-radio" id="value-4" class="radio-input" type="radio">
+                        <div class="radio-design"></div>
+                        <div class="label-text">Debit Card</div>
+                    </label>
+                    <label class="label">
+                        <input value="upi" name="value-radio" id="value-5" class="radio-input" type="radio">
+                        <div class="radio-design"></div>
+                        <div class="label-text">UPI</div>
+                    </label>
+                </div>
+            </div>
+
+            <div id="finish" class="form-section">
+                <h2>Finish</h2>
+                <p>Thank you for your purchase!</p>
+            </div>
+
+            <div class="button-container">
+                <button type="button" class="back-btn" onclick="changeSection(-1)">Back</button>
+                <button type="button" onclick="changeSection(1)">Next</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function changeSection(step) {
+            var sections = document.querySelectorAll('.form-section');
+            var progressItems = document.querySelectorAll('.progress-bar li');
+            var currentSection;
+    
+            sections.forEach(function (section) {
+                if (section.classList.contains('active')) {
+                    currentSection = section;
+                }
+            });
+    
+            var currentIndex = Array.from(sections).indexOf(currentSection);
+            var newIndex = currentIndex + step;
+    
+            if (newIndex >= 0 && newIndex < sections.length) {
+                // Check if moving from the first section to the second section
+                if (newIndex === 1) {
+                    var confirmInputs = document.querySelectorAll('#confirm input[required]');
+                    var isValid = true;
+                    confirmInputs.forEach(function(input) {
+                        if (!input.value.trim()) {
+                            isValid = false;
+                        }
+                    });
+    
+                    if (!isValid) {
+                        alert('Please fill in all the required fields before proceeding.');
+                        return; // Stop execution if any required field is empty
+                    }
+                }
+    
+                currentSection.classList.remove('active');
+                progressItems[currentIndex].classList.remove('active');
+                sections[newIndex].classList.add('active');
+                progressItems[newIndex].classList.add('active');
+    
+                // Check if we are on the last section (index = 2), if so, redirect based on selected payment method
+                if (newIndex === 2) {
+                    var selectedPaymentMethod = document.querySelector('input[name="value-radio"]:checked');
+                    if (selectedPaymentMethod) {
+                        var selectedMethodValue = selectedPaymentMethod.value;
+                        if (selectedMethodValue === 'cash-on-delivery') {
+                            window.location.href = "cash.html";
+                        } else if (selectedMethodValue === 'credit-card') {
+                            window.location.href = "creditCard.html";
+                        }
+                        // Add other conditions for other payment methods if needed
+                    }
+                }
+            }
+        }
+    
+        
+    </script>
+    
+
+
+
+</body>
+
+</html>
